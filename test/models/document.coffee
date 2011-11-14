@@ -11,8 +11,9 @@ vows.describe('Document').addBatch
         topic.save @callback
 
       '저장이 가능해야 합니다.': (err, document) ->
-        assert.isNull   err
         assert.isObject document
         assert.equal    document.title, "제목"
+      '에러가 없어야 합니다.': (err, document) ->
+        assert.isNull   err
 
 .export module
