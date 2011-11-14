@@ -7,6 +7,7 @@ var db = mongoose.connect('mongodb://localhost:27017/notepad');
 var Document = new Schema({
     author    : ObjectId
   , title     : String
+  , note      : String
   , created_at: Date
   , tags      : String
 });

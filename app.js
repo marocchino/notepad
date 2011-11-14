@@ -36,12 +36,30 @@ app.get('/', routes.index);
 
 // Document list
 app.get('/documents', function(req, res) {
-  console.log('requested /documents');
+  console.log('GET /documents');
   Document.find({},function(err, documents) {
     res.render('documents/index.jade', {
       title: 'documents index',
       documents: documents
     });
+  });
+});
+
+app.get('/documents/new', function(req, res) {
+  console.log('GET /documents/new');
+  Document.find({},function(err, documents) {
+    res.render('documents/new.jade', {
+      title: 'new document',
+      document: new Document()
+    });
+  });
+});
+
+app.post('/documents', function(req, res) {
+  console.log('POST /documents');
+  var document = new Document(req.body['document']);
+  document.save(function(err) {
+    res.redirect('/documents');
   });
 });
 
