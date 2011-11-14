@@ -1,15 +1,13 @@
-require.paths.unshift('vendor/mongoose');
-var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost:27017/notepad');
-var Schema = mongoose.Schema;
-var Document = new Schema({
-  properties: ['title', 'data', 'tags'],
-  indexes: [
-    'title'
-  ]
-});
+var mongoose = require('mongoose')
+  , Schema = mongoose.Schema
+  , ObjectId = Schema.ObjectId;
 
-var ObjectId = Schema.ObjectId;
+var Document = new Schema({
+    author    : ObjectId
+  , title     : String
+  , date      : Date
+  , tags      : String
+});
 
 mongoose.model('Document', Document);
 
