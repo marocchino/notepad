@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
-
+require('coffee-script');
 var express = require('express');
 var routes = require('./routes');
 var app = module.exports = express.createServer();
@@ -63,5 +63,7 @@ app.post('/documents', function(req, res) {
   });
 });
 
-app.listen(3000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+if (!module.parent) {
+  app.listen(3000);
+  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+}
