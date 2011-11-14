@@ -8,12 +8,9 @@ vows.describe('Document').addBatch
     "title을 가지고 있고":
       topic: (topic)->
         topic.title = "제목"
-        topic.save()
-        Document.findById topic.id, this.callback
-        return
+        topic.save @callback
 
       '저장이 가능해야 합니다.': (err, document) ->
-        console.log err, document
         assert.isNull   err
         assert.isObject document
         assert.equal    document.title, "제목"

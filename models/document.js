@@ -4,18 +4,15 @@ var mongoose = require('mongoose')
 
 var db = mongoose.connect('mongodb://localhost:27017/notepad');
 
-var Document = new Schema({
+var DocumentSchema = new Schema({
     title     : String
   , note      : String
-  , created_at: Date
+  , created_at: {
+      type: Date
+    , default: Date.now
+  }
   , tags      : String
 });
-Document.pre('save', function(next) {
-  if (this.isNew) {
-    this.created_at = new Date();
-  }
-  next();
-});
 
-mongoose.model('Document', Document);
+mongoose.model('Document', DocumentSchema);
 module.exports = db.model('Document');
