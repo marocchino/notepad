@@ -6,6 +6,7 @@
       "express": "2.5.0"
     , "coffee-script": "1.1.2"
     , "vows": "0.5.13"
+    , "tobi": "0.3.2"
     , "jade": ">= 0.17.0"
     , "mongoose": ">= 2.3.12"
   }
