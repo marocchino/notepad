@@ -30,7 +30,7 @@ vows.describe('Documents').addBatch
           @callback.bind(@, null)
         return
       "폼화면이 나와야 합니다": (_, res, $) ->
-        $('*').should.include.text('My Site')
+        $('*').should.include.text('New Document')
 
     'GET /documents/new의':
       topic: (topic) ->
