@@ -9,8 +9,12 @@ presence = (str) ->
   str.length > 0
 
 DocumentSchema = new Schema
-  title     : { type: String, validate: [presence, 'cant be blank'] }
-  note      : { type: String, validate: [presence, 'cant be blank'] }
+  title     :
+    type: String
+    validate: [presence, 'cant be blank']
+  note      : 
+    type: String
+    validate: [presence, 'cant be blank']
   created_at:
     type: Date
     default: Date.now
