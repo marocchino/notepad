@@ -10,14 +10,14 @@ presence = (str) ->
 
 DocumentSchema = new Schema
   title     :
-    type: String
+    type    : String
     validate: [presence, 'cant be blank']
   note      : 
-    type: String
+    type    : String
     validate: [presence, 'cant be blank']
   created_at:
-    type: Date
-    default: Date.now
+    type    : Date
+    default : Date.now
   tags      : String
 
 mongoose.model 'Document', DocumentSchema
