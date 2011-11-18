@@ -9,5 +9,6 @@
     , "tobi": "0.3.2"
     , "jade": ">= 0.17.0"
     , "mongoose": ">= 2.3.12"
+    , "database-cleaner": ">= 0.6.0"
   }
 }
