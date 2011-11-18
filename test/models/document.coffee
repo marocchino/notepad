@@ -9,6 +9,11 @@ cleaner = new (require "database-cleaner")("mongodb")
 vows.describe('Document').addBatch
   'document attributes는':
     topic: -> new Document()
+    "데이터가 없으면":
+      topic: (topic) ->
+        topic.save @callback
+      '에러가 나야 합니다.': (err, document) ->
+        assert.equal   err, "cant be blank"
     "title을 가지고 있고":
       topic: (topic) ->
         topic.title = "제목"
