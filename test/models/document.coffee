@@ -1,6 +1,10 @@
-vows   = require 'vows'
-assert = require 'assert'
+vows     = require 'vows'
+assert   = require 'assert'
 Document = require('../../models/document')
+cleaner  = new (require 'database-cleaner') 'mongodb'
+
+db = require("mongoose").connection.db
+cleaner = new (require "database-cleaner")("mongodb")
 
 vows.describe('Document').addBatch
   'document attributes는':
@@ -15,5 +19,6 @@ vows.describe('Document').addBatch
         assert.equal    document.title, "제목"
       '에러가 없어야 합니다.': (err, document) ->
         assert.isNull   err
-
+    teardown: (callback) ->
+      cleaner.clean(db, callback)
 .export module
