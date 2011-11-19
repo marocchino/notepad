@@ -43,20 +43,17 @@ app.Document = require("./models/document").Document(connection)
 # Routes
 app.get "/", routes.index
 app.get "/documents", (req, res) ->
-  console.log "GET /documents"
   app.Document.find {}, (err, documents) ->
     res.render "documents/index",
       title: "documents index"
       documents: documents
 
 app.get "/documents/new", (req, res) ->
-  console.log "GET /documents/new"
   res.render "documents/new",
     title: "new document"
     document: new app.Document()
 
 app.post "/documents", (req, res) ->
-  console.log "POST /documents"
   document = new app.Document(req.body["document"])
   document.save (err) ->
     unless err
