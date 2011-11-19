@@ -30,7 +30,7 @@ app.configure "test", ->
     dumpExceptions: true
     showStack: true
   )
-  app.set "db-uri", "mongodb://localhost:27017/notepad_test"
+  app.set "db-uri", "mongodb://travis:test@localhost:27017/notepad_test"
 
 app.configure "production", ->
   app.use express.errorHandler()
