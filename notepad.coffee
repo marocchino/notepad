@@ -6,6 +6,9 @@ express = require("express")
 routes = require("./routes")
 app = module.exports = express.createServer()
 
+# helper
+scope = (obj, fn) -> fn.call obj
+
 # Configuration
 
 app.configure ->
@@ -45,12 +48,12 @@ app.get "/", routes.index
 app.get "/documents", (req, res) ->
   app.Document.find {}, (err, documents) ->
     res.render "documents/index",
-      title: "documents index"
+      title: "Documents Index"
       documents: documents
 
 app.get "/documents/new", (req, res) ->
   res.render "documents/new",
-    title: "new document"
+    title: "New Document"
     document: new app.Document()
 
 app.post "/documents", (req, res) ->

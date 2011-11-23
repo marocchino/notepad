@@ -26,7 +26,7 @@ vows.describe('Documents').addBatch
     'POST /documents에 빈 데이터가 들어가면':
       topic: (topic) ->
         topic.post "/documents",
-          { body: "" },
+          { body: "document[title]=&document[note]=" },
           @callback.bind(@, null)
         return
       "폼화면이 나와야 합니다": (_, res, $) ->
