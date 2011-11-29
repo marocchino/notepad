@@ -34,7 +34,7 @@ app.configure "test", ->
 
 app.configure "production", ->
   app.use express.errorHandler()
-  app.set "db-uri", env['DB_URI']
+  app.set "db-uri", process.env.DB_URI || "mongodb://localhost:27017/notepad"
 
 # Models
 connection = require("mongoose").createConnection(app.set("db-uri"))
