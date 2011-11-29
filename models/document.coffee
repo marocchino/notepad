@@ -21,4 +21,4 @@ DocumentSchema = new Schema
   tags      : String
 
 mongoose.model 'Document', DocumentSchema
-module.exports = db.model 'Document'
+exports.Document = (db) -> db.model 'Document'

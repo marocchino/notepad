@@ -1,0 +1,5 @@
+language: node_js
+node_js:
+  - 0.6
+before_script:
+  - mongo notepad_test --eval 'db.addUser("travis", "test");'
