@@ -56,6 +56,12 @@ app.get "/documents/new", (req, res) ->
     title: "New Document"
     document: new app.Document()
 
+app.get "/documents/:id/edit", (req, res) ->
+  app.Document.findById req.params.id, (err, document) ->
+    res.render "documents/new",
+      title: "New Document"
+      document: document
+
 app.post "/documents", (req, res) ->
   document = new app.Document(req.body["document"])
   document.save (err) ->
