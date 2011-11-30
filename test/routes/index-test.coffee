@@ -4,7 +4,7 @@ tobi    = require 'tobi'
 
 vows.describe('Root').addBatch
   '브라우저에서':
-    topic: -> tobi.createBrowser 3000, 'localhost'
+    topic: -> tobi.createBrowser 8080, 'localhost'
     'GET /의':
       topic: (topic) ->
         topic.get "/", @callback.bind(@, null)
