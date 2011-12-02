@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test'
 vows     = require 'vows'
 assert   = require 'assert'
 cleaner  = new (require 'database-cleaner') 'mongodb'
-mongoose = require("mongoose")
+mongoose = require "mongoose"
 connection = mongoose.createConnection('mongodb://travis:test@localhost:27017/notepad_test')
 Document = require('../../models/document').Document(connection)
 vows.describe('Document').addBatch

@@ -4,8 +4,8 @@ table
     th note
   - each document in documents
     tr
-      td=document.title
-      td=document.note
+      td
+        a(href='/documents/#{document.id}/edit')=document.title
       td=document.created_at
 p #{documents.length} documents
-a(href='/documents/new') new page
+a#new(href='/documents/new') new page
