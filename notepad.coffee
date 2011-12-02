@@ -33,7 +33,11 @@ app.configure "test", ->
   app.set "db-uri", "mongodb://travis:test@localhost:27017/notepad_test"
 
 app.configure "production", ->
-  app.use express.errorHandler()
+  app.use express.logger()
+  app.use express.errorHandler(
+    dumpExceptions: true
+    showStack: true
+  )
   app.set "db-uri", process.env.DB_URI || "mongodb://localhost:27017/notepad"
 
 # Models
