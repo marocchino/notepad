@@ -5,8 +5,8 @@ mongoose = require "mongoose"
 connection = mongoose.createConnection('mongodb://travis:test@localhost:27017/notepad_test')
 Document = require('../../models/document').Document(connection)
 
-vows.describe('Documents').addBatch
-  '브라우저에서':
+vows.describe('Documents')
+  .addBatch '초기상태에서':
     topic: -> tobi.createBrowser 8080, 'localhost'
     'GET /documents의':
       topic: (topic) ->

@@ -3,18 +3,16 @@ Schema = mongoose.Schema
 ObjectId = Schema.ObjectId
 
 db = mongoose.connect 'mongodb://localhost:27017/notepad'
-presence = (str) ->
-  console.log str
-  console.log typeof str
-  str.length > 0
+validatePresenceOf = (str) ->
+  str && str.length
 
 DocumentSchema = new Schema
   title     :
     type    : String
-    validate: [presence, 'cant be blank']
+    validate: [validatePresenceOf, 'title cant be blank']
   note      :
     type    : String
-    validate: [presence, 'cant be blank']
+    validate: [validatePresenceOf, 'note cant be blank']
   created_at:
     type    : Date
     default : Date.now
