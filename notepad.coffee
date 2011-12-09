@@ -66,7 +66,7 @@ app.get "/documents/:id/edit", (req, res) ->
       title: "Edit Document"
       document: document
 
-app.put "/documents/:id/edit", (req, res) ->
+app.put "/documents/:id", (req, res) ->
   app.Document.findById req.params.id, (err, document) ->
     for attr, value of req.body.document
       document[attr] = value
@@ -78,6 +78,10 @@ app.put "/documents/:id/edit", (req, res) ->
         res.render "documents/edit",
           title: "Edit Document"
           document: document
+app.del "/documents/:id", (req, res) ->
+  app.Document.findById req.params.id, (err, document) ->
+    document.remove ->
+      res.redirect "/documents"
 
 app.post "/documents", (req, res) ->
   document = new app.Document req.body.document

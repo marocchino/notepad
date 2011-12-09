@@ -1,11 +1,12 @@
 table
   tr
     th title
-    th note
   - each document in documents
     tr
       td
         a(href='/documents/#{document.id}/edit')=document.title
+      td
+        a(href='/documents/#{document.id}', class='destroy') Delete
       td=document.created_at
 p #{documents.length} documents
 a#new(href='/documents/new') new page
