@@ -1,0 +1,7 @@
+.page
+  h2=title
+  p
+    a.button(href='/documents') &larr; All Documents
+  form(method='post', action='/documents/'+document.id+'/edit')
+    input(name='_method', value='PUT', type='hidden')
+    !=partial('_form', { locals: { document: document } })

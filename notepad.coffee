@@ -62,12 +62,25 @@ app.get "/documents/new", (req, res) ->
 
 app.get "/documents/:id/edit", (req, res) ->
   app.Document.findById req.params.id, (err, document) ->
-    res.render "documents/new",
-      title: "New Document"
+    res.render "documents/edit",
+      title: "Edit Document"
       document: document
 
+app.put "/documents/:id/edit", (req, res) ->
+  app.Document.findById req.params.id, (err, document) ->
+    for attr, value of req.body.document
+      document[attr] = value
+    document.save (err) ->
+      unless err
+        res.redirect "/documents"
+      else
+        console.log err
+        res.render "documents/edit",
+          title: "Edit Document"
+          document: document
+
 app.post "/documents", (req, res) ->
-  document = new app.Document(req.body["document"])
+  document = new app.Document req.body.document
   document.save (err) ->
     unless err
       res.redirect "/documents"
