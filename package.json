@@ -3,7 +3,7 @@
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
-      "express": "2.5.0"
+      "express": "4.17.1"
     , "coffee-script": "1.1.2"
     , "vows": "0.5.13"
     , "tobi": "0.3.2"
